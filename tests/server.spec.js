@@ -9,8 +9,8 @@ describe("Operaciones CRUD de cafes", () => {
 ////////////////////////////////////
 describe("Operaciones CRUD", () => {
 
-  // Verifica que la ruta GET /productos devuelva un ARREGLO y no este vacío
-  it (" /get producto retorna un arreglo y no vacio", async () => {
+  // Testea que la ruta GET /cafes devuelve un status code 200 y el tipo de dato recibido es un arreglo con por lo menos 1 objeto
+  it (" get /cafes retorna un arreglo y no vacio", async () => {
       const response = await request(server).get("/cafes").send()
       const body = response.body
 
@@ -20,7 +20,7 @@ describe("Operaciones CRUD", () => {
 
 
   //Comprueba que se obtiene un código 404 al intentar eliminar un café con un id que no existe.
-  it (" /get producto retorna un arreglo y no vacio", async () => {
+  it (" delete /cafes devuelve un 404 ", async () => {
     const response = await request(server)
     .delete("/cafes/666")
     .set('Authorization', 'test')
@@ -29,7 +29,7 @@ describe("Operaciones CRUD", () => {
 })
 
 //rueba que la ruta POST /cafes agrega un nuevo café y devuelve un código 201.
-  it (" POST /productos está agregando un nuevo producto", async () => {
+  it (" POST /cafes está agregando un nuevo producto", async () => {
    const NuevoProducto ={
       id:5,
       nombre:"Cocacola Con Fanta"
@@ -43,7 +43,7 @@ describe("Operaciones CRUD", () => {
 
 //Prueba que la ruta PUT /cafes devuelve un status code 400 si intentas actualizar un café enviando un id en los parámetros que sea diferente al id dentro del payload.
 
-it (" POST /productos está agregando un nuevo producto", async () => {
+it (" Put /cafes devuelve un 400 ", async () => {
   const CafeAActualizar ={
      id:1,
      nombre:"Test"
